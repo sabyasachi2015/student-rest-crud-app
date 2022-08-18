@@ -1,0 +1,37 @@
+server:
+  port: 9092
+  
+spring:
+  application:
+    name: student-management-service
+#Datasource properties    
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/restappdb
+    username: root
+    password: root
+#Jpa properties    
+  jpa:
+    hibernate:
+      ddl-auto: update     
+    show-sql: true    
+    properties:
+      hibernate:
+       dialect: org.hibernate.dialect.MySQL5Dialect
+       format_sql: true
+
+management:  endpoints:    web:      exposure:        include:        - '*'
+
+eureka:  client:    register-with-eureka: true
+    fetch-registry: true
+    service-url:      defaultZone: http://localhost:8761/eureka
+             
+student:
+  properties:
+    studentRegSuccess: Student Registered Successfully
+    studentRegFailed: Failed to Register Student  
+    
+    
+    
+    
+         
